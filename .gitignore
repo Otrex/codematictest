@@ -24,7 +24,6 @@ yarn-error.log
 connect.lock
 coverage
 libpeerconnection.log
-yarn.lock
 package-lock.json
 testem.log
 typings
