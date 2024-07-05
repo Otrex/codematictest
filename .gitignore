@@ -28,6 +28,10 @@ package-lock.json
 testem.log
 typings
 
+database.sqlite
+db.sqlite
+src/database/*.sqlite
+
 # System files
 .DS_Store
 Thumbs.db
