@@ -33,7 +33,6 @@ COPY package.json .
 COPY --from=deps /usr/src/app/node_modules ./node_modules
 COPY --from=build /usr/src/app/dist ./dist
 
-RUN touch /usr/src/app/dist/src/database/db.sqlite
 
 EXPOSE 3000
 

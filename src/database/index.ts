@@ -3,9 +3,10 @@ import { join } from "path"
 import fs from "fs"
 
 import migrations from "./migrations";
+import config from "../config";
 
 
-const dbPath = join(__dirname, "db.sqlite")
+const dbPath = join(__dirname, `db.${config.env}.sqlite`)
 
 export async function runMigrations() {
   await sq.authenticate()
@@ -14,15 +15,6 @@ export async function runMigrations() {
   }
 }
 
-
-if (!fs.existsSync(dbPath)) {
-  fs.writeFileSync(dbPath, "")
-}
-
-
-const sq = new Sequelize({
-  dialect: "sqlite",
-  storage: dbPath
-})
+const sq = new Sequelize('sqlite::memory:')
 
 export default sq;

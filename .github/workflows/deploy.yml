@@ -7,15 +7,13 @@ on:
       - completed
 
 jobs:
-
   build:
-
     runs-on: self-hosted
 
     steps:
-    - name: Pull Docker image
-      run: sudo docker pull otrex/codematictest:latest
-    - name: Delete Old docker container
-      run: sudo docker rm -f codematictest || true
-    - name: Run Docker Container
-      run: sudo docker run -d -p 3000:3000 --name codematictest otrex/codematictest
+      - name: Pull Docker image
+        run: sudo docker pull otrex/codematictest:latest
+      - name: Delete Old docker container
+        run: sudo docker rm -f codematictest || true
+      - name: Run Docker Container
+        run: sudo docker run -d -p 3000:3000 --name codematictest otrex/codematictest -v ./database:./database
