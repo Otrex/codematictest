@@ -91,4 +91,24 @@ router.get('/films/:id/comments', async (req, res, next) => {
   }
 })
 
+router.delete('/films/:filmId/comments/:commentId', async (req, res, next) => {
+  try {
+    const filmId = +req.params.filmId
+    const commentId = +req.params.commentId
+
+    const comment = await Comment.findOne({ where: { id: commentId, filmId } })
+
+    if (!comment) {
+      return res.status(404).json({ error: 'Comment not found' })
+    }
+
+    await comment.destroy()
+
+    return res.status(200).json({ message: 'Comment deleted' })
+  } catch (error) {
+    next(error)
+  }
+})
+
+
 export default router;
