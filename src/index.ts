@@ -9,3 +9,4 @@ import { runMigrations } from './database';
     console.log(`http://localhost:${config.port}`)
   })
 })()
+
