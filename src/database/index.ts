@@ -3,9 +3,9 @@ import { join } from "path"
 import fs from "fs"
 
 import migrations from "./migrations";
-import config from "../config";
+// import config from "../config";
 
-const dbPath = join(__dirname, `db.${config.env}.sqlite`)
+// const dbPath = join(__dirname, `db.${config.env}.sqlite`)
 
 export async function runMigrations() {
   await sq.authenticate()
