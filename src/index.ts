@@ -1,18 +1,11 @@
-import express from 'express'
-import cors from 'cors'
+import app from './app';
+import config from './config';
 
-import router from './router'
-import config from './config'
+import { runMigrations } from './database';
 
-const app = express()
-
-
-app.use(cors())
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
-
-app.use('/api', router)
-
-app.listen(config.port, () => {
-  console.log(`Server is running on port http://localhost:${config.port}`)
-})
+(async () => {
+  await runMigrations()
+  app.listen(config.port, () => {
+    console.log(`http://localhost:${config.port}`)
+  })
+})()
